@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+
+    <h3>Formulario para darse de alta como usuario en nuestra WEB</h3>
+    <form id="formulario" name="formRegistro" action="registrar.php" method="post">
+
+        Nombre de usuario: <input type="text" id="entrada1" name="usuario" maxlength="8" />(Máximo 8 caracteres)<br />
+        Contraseña: <input type="password" id="entrada2" name="clave" /><br />
+        Repetir Contraseña: <input type="password" id="entrada3" name="claveRepe" />(Deben coincidir)<br />
+        Email: <input type="text" id="entrada4" name="email" size="40" /><br />
+        Idioma: <select id="seleccion1" name="idioma">
+
+    <option id="opcion1" value="EN">Inglés</option>
+    <option id="opcion2" value="ES">Español</option>
+    <option id="opcion3" value="DE">Alemán</option>
+
+</select><br />
+        <input type="checkbox" id="seleccion2" name="publicidad" />Quiero recibir publicidad mensual en mi email<br />
+    </form>
+
+    <script type="text/javascript">
+
+        //Función que comprueba el nombre de usuario
+
+        function comprobarUsuario(nombreUsuario) {
+
+            if(nombreUsuario!="") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        //Función que comprueba la contraseña
+
+        function comprobarClave(clave, claveRepetida) {
+            if (clave != "" && claveRepetida != "") {
+                return (clave == claveRepetida);
+            } else {
+                return false;
+            }
+        }
+
+        //Función que comprueba el email
+
+        function comprobarEmail(email) {
+            var patron = new RegExp("^\\w+@\\w+\\.\\w{2,3}$");
+            if (email != "") {
+                return patron.test(email);
+            } else {
+                return false;
+            }
+        }
+
+        //Función que comprueba el idioma
+
+        function comprobarIdioma(indiceIdioma) {
+
+            return (indiceIdioma != -1);
+
+        }
+
+        //Función que comprueba el envío de publicidad
+
+        function comprobarPublicidad(aceptaPublicidad) {
+
+            if (!aceptaPublicidad) {
+                var boton = confirm("Nuestra publicidad le mantendrá informado sobre las ofertas y novedades.\n¿Desea recibirla en su email?");
+                return boton;
+            } else {
+                return true;
+            }
+        }
+
+        //Función que valida el formulario de registro
+
+        function validarRegistro() {
+            with (document.formRegistro) {
+                //Comprobar campos obligatorios
+
+                if (!comprobarUsuario(usuario.value)) {
+                    alert("El nombre de usuario está vacío.");
+                    usuario.focus();
+                } else if (!comprobarClave(clave.value, claveRepe.value)) {
+                    alert("La contraseña está vacía o no coinciden");
+                    //Borramos para que sean escritas de nuevo
+                    clave.value = "";
+                    claveRepe.value = "";
+                    clave.focus();
+                } else if (!comprobarEmail(email.value)) {
+                    alert("El email está vacío o no es válido.");
+                    //No borramos sino que seleccionamos para resaltar
+                    email.select();
+                    email.focus();
+                } else if (!comprobarIdioma(idioma.selectedIndex)) {
+                    alert("No hay un idioma seleccionado");
+                    idioma.focus();
+
+                } else {
+                    publicidad.checked = comprobarPublicidad(publicidad.cheched);
+                }
+            }
+        }
+
+
+        
+    </script>
+    <a href="javascript:validarRegistro()">Validar formulario</a>
+</body>
+</html>
