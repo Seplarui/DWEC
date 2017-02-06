@@ -7,5 +7,34 @@
 </head>
 <body>
 
+    <script type="text/javascript">
+        /* CALCULAR Y MOSTRAR LA SUPERFICIE DE DOS CÍRCULOS DE RADIOS PREDETERMINADOS Y LAS DIFERENCIAS ENTRE SUS DOS SUPERFICIES*/
+
+        var radio1 = 3.5;
+        var radio2 = 5.5;
+
+        var superficie1, superficie2;
+        var diferencia = 0;
+        var PI = 3.14159;
+
+        superficie1 = radio1 * radio1 * PI;
+        superficie2 = radio2 * radio2 * PI;
+
+        if (superficie1 < superficie2) {
+
+            diferencia = superficie2 - superficie1;
+
+        } else {
+            diferencia = superficie1 - superficie2;
+        }
+
+        document.writeln("El radio1 es " + radio1 + " y la superficie es: " + superficie1);
+        document.writeln(" El radio2 es " + radio2 + " y la superficie es: " + superficie2);
+
+        document.writeln("La diferencia de superficies es: " + diferencia);
+
+
+    </script>
+
 </body>
 </html>
