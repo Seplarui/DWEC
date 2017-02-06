@@ -12,22 +12,43 @@
     Ejer 1-a) Perder el foco.
     Ejer 1-b) Enviar el formulario, cancelando el envío si no es correcto.
     -->
-    <form method="post" action="comprobar.php">
+    <form method="post" action="comprobar.php" id="miForm">
         <input type="text" id="dni" name="dni" />
-        <input type="submit" value="Enviar" />
+        <input type="submit" value="Enviar" onblur="" />
     </form>
 
     <script type="text/javascript">
 
-        //ASIGNAMOS A LA VARIABLE din_j EL VALOR DEL CAMPO TEXTO
-        var dni_j = document.getElementById("dni").value;
-        //document.write(dni_j);
+        function calcularLetra(numeroDni) {
 
-        
+            var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+            return letras[numeroDni % 23];
+        }
 
+        function comprobar() {
 
+            var t = document.getElementById("dni");
+            var texto = t.value.toUpperCase();
+            t.value = texto;
+            var dni = texto.substring(0, 8);
+            var letra = texto[8];
 
+            if (letra != calcularLetra(dni)) {
 
+                alert("Letra no coincide con DNI");
+                return false;
+            }
+            //Se hace el evento
+
+            return true;
+        }
+
+        window.onload = function () {
+            var f = document.getElementById("miForm");
+            var t = document.getElementById("miTexto");
+            f.onsubmit = comprobar;
+            t.onblur = comprobar;
+        }
 
 
 
