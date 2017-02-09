@@ -1,0 +1,41 @@
+<html>
+    
+    <head><meta charset="utf-8" /></head>
+    
+    <body>
+        
+        <select id="aprobar">
+            
+            <option value="10">Saco 10 en DWC</option>
+            <option value="9">Saco 9 en DWC</option>
+            <option value="8">Saco 8 en DWC</option>
+        
+        </select>
+
+        <script type="text/javascript">
+
+            var elemento = document.getElementById("aprobar");
+            for (i = 0; i < elemento.options.length; i++) {
+                alert("Valor de la opción " + elemento.options[i].value);
+            }
+
+            var sel = elemento.selectedIndex;
+            
+            alert("El valor de la opción seleccionada es " + elemento.options[sel].value+" y el texto asociado es "+elemento.options[sel].text);
+
+            //cambiamos el índice seleccionado
+
+            elemento.selectedIndex=0;
+
+
+        </script>
+        
+        
+    
+    
+    </body>
+    
+    
+
+
+</html>
