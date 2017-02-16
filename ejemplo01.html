@@ -30,7 +30,9 @@
     coche1.mostrarCoche();
     coche2.mostrarCoche();
 //MOSTRAMOS la matrícula del segundo objeto
-
+textoJSON=JSON.stringify(coche1);
+var cocheReconstruido=JSON.parse(textoJSON);
+alert(cocheReconstruido.mostrarCoche());
     </script>
 
 
