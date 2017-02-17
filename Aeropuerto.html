@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+        function aeropuerto(nombre, ciudad, nVuelos) {
+            this.nombre = nombre;
+            this.ciudad = ciudad;
+            this.vuelos = new Array();
+
+            function cambiarHoraLlegada(n, nuevaHora) {
+                this.vuelos[n].cambiarHoraLlegada(nuevaHora);
+            }
+            this.cambiarHoraLlegada = cambiarHoraLlegada;
+
+            function cambiarHoraSalida(n, nuevaHora) {
+                this.vuelos[n].cambiarHoraSalida(nuevaHora);
+            }
+            this.cambiarHoraSalida = cambiarHoraSalida;
+
+            function compruebaLlegadaMayorSalida(n) {
+                alert(this.vuelos[n].compruebaLlegadaMayorSalida());
+            }
+            this.compruebaLlegadaMayorSalida = compruebaLlegadaMayorSalida;
+
+            for (i = 0; i < nVuelos; i++) {
+                this.vuelos[i] = new vuelo(i, "11:00", "12:00");
+            }
+        }
+
+
+        function vuelo(codigo, horaSalida, horaLlegada) {
+            this.codigo = codigo;
+            this.horaSalida = horaSalida;
+            this.horaLlegada = horaLlegada;
+
+            function cambiarHoraLlegada(nuevaHora) {
+                this.horaLlegada = nuevaHora;
+            }
+            this.cambiarHoraLlegada = cambiarHoraLlegada;
+
+            function cambiarHoraSalida(nuevaHora) {
+                this.horaSalida = nuevaHora;
+            }
+            this.cambiarHoraSalida = cambiarHoraSalida;
+
+            function compruebaLlegadaMayroSalida() {
+                lleg = this.horaLlegada.split(":");
+                sal = this.horaSalida.split(":");
+
+                hhlleg = parseInt(lleg[0]);
+                mmlleg = parseInt(lleg[1]);
+
+                hhsal = parseInt(sal[0]);
+                mmsal = parseInt(sal[1]);
+
+                if (hhleg > hhsal) {
+                    return true;
+                } else if (hhlleg < hhsal) {
+                    return false;
+                } else {
+                    if (mmlleg > mmsal) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+            this.compruebaLlegadaMayorSalida = compruebaLlegadaMayroSalida;
+        }
+
+        var miAeropuerto = new aeropuerto("Ceed", "Valencia", 10);
+        miAeropuerto.compruebaLLegadaMayorSalida(1);
+        miAeropuerto.cambiarHoraSalida(1, "13:00");
+        miAeropuerto.compruebaLLegadaMayorSalida(1);
+        miAeropuerto.cambiarHoraLLegada(1, "14:00");
+        miAeropuerto.compruebaLLegadaMayorSalida(1);
+
+
+
+    </script>
+
+</body>
+</html>

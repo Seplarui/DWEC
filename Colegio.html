@@ -27,9 +27,35 @@
                 
         }
 
-        var colegio1 = new colegio("Colegio", 30, 32);
-        colegio1.mostrarColegio();
+        function alumno(dni, nombre, notamedia) {
 
+            function mostrarAlumno() {
+                var resultado = "DNI: " + this.dni + " Nombre: " + this.nombre + " notamedia " + this.notamedia;
+                alert(resultado);
+            }
+
+            function notaMedia() {
+                var nota = "La nota media del alumno es: " + this.notamedia;
+                alert(nota);
+            }
+            //Inicializamos atributos
+
+            this.dni = dni;
+            this.nombre = nombre;
+            this.notamedia = notamedia;
+            this.mostrarAlumno = mostrarAlumno;
+            this.notaMedia = notaMedia;
+                
+        }
+
+        /*var colegio1 = new colegio("Colegio", 30, 32);
+        colegio1.mostrarColegio();*/
+
+        var alumno1 = new alumno("12345678X", "Pepe", 4.5);
+        //alumno1.mostrarAlumno();
+        //var kk = alumno1.notaMedia();
+        //alert(kk);
+        alumno1.notaMedia();
 
 
     </script>
